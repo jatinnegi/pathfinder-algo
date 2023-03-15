@@ -23,7 +23,7 @@ export class PriorityQueue {
   }
 
   enqueue(val: string, priority: number) {
-    let newNode = new Node(val, priority);
+    const newNode = new Node(val, priority);
     this.values.push(newNode);
     this.bubbleUp();
   }
@@ -31,8 +31,8 @@ export class PriorityQueue {
     let idx = this.values.length - 1;
     const element = this.values[idx];
     while (idx > 0) {
-      let parentIdx = Math.floor((idx - 1) / 2);
-      let parent = this.values[parentIdx];
+      const parentIdx = Math.floor((idx - 1) / 2);
+      const parent = this.values[parentIdx];
       if (element.priority >= parent.priority) break;
       this.values[parentIdx] = element;
       this.values[idx] = parent;
@@ -53,8 +53,8 @@ export class PriorityQueue {
     const length = this.values.length;
     const element = this.values[0];
     while (true) {
-      let leftChildIdx = 2 * idx + 1;
-      let rightChildIdx = 2 * idx + 2;
+      const leftChildIdx = 2 * idx + 1;
+      const rightChildIdx = 2 * idx + 2;
       let leftChild, rightChild;
       let swap = null;
 
@@ -98,7 +98,7 @@ export default function Dijkstra(
   let smallest;
 
   //build up initial state
-  for (let vertex in adjacencyList) {
+  for (const vertex in adjacencyList) {
     if (wallNodes[vertex]) continue;
     if (vertex === start) {
       distances[vertex] = 0;
@@ -124,12 +124,12 @@ export default function Dijkstra(
       break;
     }
     if (smallest || distances[smallest] !== Infinity) {
-      for (let neighbor in adjacencyList[smallest]) {
+      for (const neighbor in adjacencyList[smallest]) {
         //find neighboring node
-        let nextNode = adjacencyList[smallest][neighbor];
+        const nextNode = adjacencyList[smallest][neighbor];
         //calculate new distance to neighboring node
-        let candidate = distances[smallest] + nextNode.weight;
-        let nextNeighbor = nextNode.node;
+        const candidate = distances[smallest] + nextNode.weight;
+        const nextNeighbor = nextNode.node;
         if (candidate < distances[nextNeighbor]) {
           //updating new smallest distance to neighbor
           distances[nextNeighbor] = candidate;
